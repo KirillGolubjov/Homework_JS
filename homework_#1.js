@@ -90,21 +90,21 @@ const people = [{userName: 'Jack', age: 18}, {userName: 'Mary', age: 20}, {userN
 
 people.forEach(
     person => { 
-    if(person.age < 15){
+    if (person.age < 15){
     console.log(person.userName, 'is child')
     }
 } 
 )
 people.forEach(
     person => { 
-    if(person.age < 18 ) if(person.age > 14){
+    if (person.age < 18 && person.age > 14){
     console.log(person.userName, 'is teenager')
     }
 }
 )
 people.forEach(
     person => { 
-    if(person.age >= 18){
+    if (person.age >= 18){
      console.log(person.userName, 'is adult')
      }
 }

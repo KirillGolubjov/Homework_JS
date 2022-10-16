@@ -9,6 +9,18 @@ const names = ['Jack', 'Mariah', 'Sarah', 'Jonathan', 'Piere', 'Bob', 'Samantha'
 
 names.forEach(person => console.log(`Hello ${person}. Your name is ${person.length} characters long!`));
 
+//Вариант No2
+function namesOfEach(nameF, lengthF) {
+    return `Hello ${nameF}. Your name is ${lengthF} characters long!`     
+}
+console.log(namesOfEach(names[0], names[0].length));
+console.log(namesOfEach(names[1], names[1].length));
+console.log(namesOfEach(names[2], names[2].length));
+console.log(namesOfEach(names[3], names[3].length));
+console.log(namesOfEach(names[5], names[5].length));
+console.log(namesOfEach(names[6], names[6].length));
+console.log(namesOfEach(names[7], names[7].length));
+
 // напишите функцию которая примет объект в качестве аргумента
 // Функция должна вернуть одну строку
 // Your Honda Civic (is popular / is not popular). (It is not / it is) covered by warranty anymore!

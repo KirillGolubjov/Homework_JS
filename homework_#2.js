@@ -60,6 +60,9 @@ console.log(`Your Honda Civic ${newCarPopularity}. ${newCarMileage} by warranty 
             }
         }
         console.log(toPositive(5, 5));       
+        console.log(toPositive(-5, 5));       
+        console.log(toPositive(5, -5));       
+        console.log(toPositive(-5, -5));       
 
  // Напишите функцию, которая складывает только положительные числа
 // если одно из чисел отрицательное, то выводит строку (одно из чисел негативное

@@ -1,14 +1,16 @@
 // 1
 // Дан массив с элементами [2, 3, 4, 5]. С помощью цикла for of найдите произведение элементов этого массива.
 // Сделайте то же самое с помощью обычного цикла for
-const nums = [2, 3, 4, 5];
+let result = 1;
 
-for(let i of nums) {
-    console.log(i * i);
+for (num of nums) {
+    result *= num;
 }
+console.log(result);
 
-for (let j = 2; j < 6; j++){
-    console.log(j * j)
+let result2 = 1;
+for (let i = 0; i < nums.length; i++){
+    result2 *= nums[i];
 }
 
 // 2
@@ -52,8 +54,18 @@ console.log('Iterated ' + iteration + ' times')
 let emptyArr = [];
 
 for(let i = 0; i < 1000; i++){
-     emptyArr.push(i);   
-    
+     emptyArr.push(String(i).padStart(4, 0));   
+}
+console.log(emptyArr)
+
+for (let i = 0; i < 1000; i++) {
+    if(String(i).length === 1) {
+        emptyArr.push('000' + i)
+    } else if(String(i).length === 2) {
+        emptyArr.push('00' + i)
+} else if(String(i).length === 3) {
+    emptyArr.push('0' + i);
+}
 }
 console.log(emptyArr)
 
@@ -63,17 +75,14 @@ console.log(emptyArr)
     const numbers = [4, 3, 10, 99, 23, 41, 5, 12, 23, 41, 12, 32];
 
 
-    numbers.forEach(
-        cnt => {
-            while(cnt % 2 === 0) {
-            if(cnt <= 23) {
-            console.log(cnt, 'четное')
-            break
-            }
-            cnt++
-            }
+    for (num of numbers) {
+    if(num === 23) {
+        break
     }
-    );
+    if (num % 2 === 0) {
+        console.log(num);
+    }
+}
 
 
 // // 6

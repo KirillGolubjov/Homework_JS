@@ -38,79 +38,134 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+
+  orderPasta: function (ingredient1, ingredient2, ingredient3) {
+    console.log(
+      `Here is your delicious pasta with ${ingredient1}, ${ingredient2} and ${ingredient3}`
+    );
+  },
 };
 
-restaurant.orderDelivery({
-  time: '12:05',
-  address: 'Paepargi 41-3',
-  mainIndex: 2,
-  starterIndex: 2,
-});
+//The Spread Operator TODO (...)
 
-restaurant.orderDelivery({
-  address: 'Tuha 7-2',
-  starterIndex: 1,
-});
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
 
-// DESCTUCTURING OBJECT TODO {}
+const newArr = [1, 2, ...arr];
+console.log(newArr);
 
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
+console.log(...newArr);
 
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
-console.log(restaurantName, hours, tags);
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
 
-//Default values
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
+// Copy array
+const mainMenuCopy = [...restaurant.mainMenu];
 
-// Mutating variables
-let a = 111;
-let b = 999;
-const obj = { a: 23, b: 7, c: 14 };
+// Join 2 arrays
 
-({ a, b } = obj);
-console.log(a, b);
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
 
-// Nested objects
+// Iterables: arrays, strings, maps, sets. NOT objects
+const str = 'Kirill';
+const letters = [...str, '', 'G.'];
+console.log(letters);
+console.log(...str);
 
-const {
-  fri: { open: o, close: c },
-} = openingHours;
-console.log(o, c);
+// Real-world example
+const ingredients = [
+  // prompt("Let's make your pasta! Ingredient 1?"),
+  // prompt("Let's make pasta! Ingredient 2?"),
+  // prompt("Let's make pasta! Ingredient 3?"),
+];
 
-/////////////////////////////////////////
-// DESCTUCTURING ARRAYS TODO []
+console.log(ingredients);
 
-let [main, , secondary] = restaurant.categories;
-console.log(main, secondary);
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+restaurant.orderPasta(...ingredients);
 
-// Switching variables
-// const temp = main;
-// main = secondary;
-// secondary = temp;
+// Objects
+
+const newRestaurant = { foundedIn: 2005, ...restaurant, founder: 'Rocco' };
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Pizza Squad';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
+
+// // DESCTUCTURING OBJECT TODO {}
+// restaurant.orderDelivery({
+//   time: '12:05',
+//   address: 'Paepargi 41-3',
+//   mainIndex: 2,
+//   starterIndex: 2,
+// });
+
+// restaurant.orderDelivery({
+//   address: 'Tuha 7-2',
+//   starterIndex: 1,
+// });
+
+// const { name, openingHours, categories } = restaurant;
+// console.log(name, openingHours, categories);
+
+// const {
+//   name: restaurantName,
+//   openingHours: hours,
+//   categories: tags,
+// } = restaurant;
+// console.log(restaurantName, hours, tags);
+
+// //Default values
+// const { menu = [], starterMenu: starters = [] } = restaurant;
+// console.log(menu, starters);
+
+// // Mutating variables
+// let a = 111;
+// let b = 999;
+// const obj = { a: 23, b: 7, c: 14 };
+
+// ({ a, b } = obj);
+// console.log(a, b);
+
+// // Nested objects
+
+// const {
+//   fri: { open: o, close: c },
+// } = openingHours;
+// console.log(o, c);
+
+// /////////////////////////////////////////
+// // DESCTUCTURING ARRAYS TODO []
+
+// let [main, , secondary] = restaurant.categories;
 // console.log(main, secondary);
 
-[main, secondary] = [secondary, main];
-console.log(main, secondary);
+// // Switching variables
+// // const temp = main;
+// // main = secondary;
+// // secondary = temp;
+// // console.log(main, secondary);
 
-// Receive 2 return values from a function
-const [starter, mainCourse] = restaurant.order(3, 1);
-console.log(starter, mainCourse);
+// [main, secondary] = [secondary, main];
+// console.log(main, secondary);
 
-//Nested destructuring
-const nested = [2, 4, [5, 6]];
-// const [i, , j] = nested;
-// console.log(i, j);
-const [i, , [j, k]] = nested;
-console.log(i, j, k);
+// // Receive 2 return values from a function
+// const [starter, mainCourse] = restaurant.order(3, 1);
+// console.log(starter, mainCourse);
 
-//Default values
-const [p = 1, q = 1, r = 1] = [8, 2];
-console.log(p, q, r);
+// //Nested destructuring
+// const nested = [2, 4, [5, 6]];
+// // const [i, , j] = nested;
+// // console.log(i, j);
+// const [i, , [j, k]] = nested;
+// console.log(i, j, k);
 
-// This can be useful, when we get data from an API.
+// //Default values
+// const [p = 1, q = 1, r = 1] = [8, 2];
+// console.log(p, q, r);
+
+// // This can be useful, when we get data from an API.

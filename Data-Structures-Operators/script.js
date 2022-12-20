@@ -50,45 +50,75 @@ const restaurant = {
   },
 };
 
-//The spread and rests syntax both look exactly the same, but they work in opposite ways, depending on where they are used.
-//So the spread operator is used where we would otherwise write values, separated by a comma.
-//On the other hand, the rest pattern is basically used where we would otherwise write variable names separated by commas.
+console.log(`---- OR ----`);
+// Use ANY data type, return ANY data type, short-circuiting
+console.log(3 || 'Kirill');
+console.log('' || 'Kirill');
+console.log(true || 0);
+console.log(undefined || null);
 
-// 1) Destructuring
-//SPREAD, because on RIGHT side of =
-const arr = [1, 2, ...[3, 4]];
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
 
-//REST, because on LEFT side of =
-const [a, b, ...others] = [1, 2, 3, 4, 5];
+restaurant.numGuests = 0;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
 
-console.log(a, b, others);
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
 
-const [pizza, , risotto, ...otherFood] = [
-  ...restaurant.mainMenu,
-  ...restaurant.starterMenu,
-];
-console.log(pizza, risotto, otherFood);
-//the rest syntax collects all the array after the last variable. It does not include any skipped elements.
+console.log(`---- AND ----`);
 
-//Objects
-const { sat, ...weekDays } = restaurant.openingHours;
-console.log(sat, weekDays);
+console.log(0 && 'Jonas');
+console.log(7 && 'Jonas');
 
-// 2) Functions
-const add = function (...numbers) {
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
-  console.log(sum);
-};
-add(2, 3);
-add(5, 3, 7, 2);
-add(8, 2, 5, 3, 2, 1, 4);
+console.log('Hello' && 23 && null && 'Kirill');
 
-const x = [23, 5, 7];
-add(...x);
+Practical example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza(`mushrooms`, `spinach`);
+}
 
-restaurant.orderPizza('dough', 'salami', 'olives', 'tomato');
-restaurant.orderPizza('mushrooms');
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+// //The spread and rests syntax both look exactly the same, but they work in opposite ways, depending on where they are used.
+// //So the spread operator is used where we would otherwise write values, separated by a comma.
+// //On the other hand, the rest pattern is basically used where we would otherwise write variable names separated by commas.
+
+// // 1) Destructuring
+// //SPREAD, because on RIGHT side of =
+// const arr = [1, 2, ...[3, 4]];
+
+// //REST, because on LEFT side of =
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+
+// console.log(a, b, others);
+
+// const [pizza, , risotto, ...otherFood] = [
+//   ...restaurant.mainMenu,
+//   ...restaurant.starterMenu,
+// ];
+// console.log(pizza, risotto, otherFood);
+// //the rest syntax collects all the array after the last variable. It does not include any skipped elements.
+
+// //Objects
+// const { sat, ...weekDays } = restaurant.openingHours;
+// console.log(sat, weekDays);
+
+// // 2) Functions
+// const add = function (...numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+//   console.log(sum);
+// };
+// add(2, 3);
+// add(5, 3, 7, 2);
+// add(8, 2, 5, 3, 2, 1, 4);
+
+// const x = [23, 5, 7];
+// add(...x);
+
+// restaurant.orderPizza('dough', 'salami', 'olives', 'tomato');
+// restaurant.orderPizza('mushrooms');
 
 //////////////////////////////////////////////
 // //The Spread Operator TODO (...)

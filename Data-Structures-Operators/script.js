@@ -44,57 +44,102 @@ const restaurant = {
       `Here is your delicious pasta with ${ingredient1}, ${ingredient2} and ${ingredient3}`
     );
   },
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
 
-//The Spread Operator TODO (...)
+//The spread and rests syntax both look exactly the same, but they work in opposite ways, depending on where they are used.
+//So the spread operator is used where we would otherwise write values, separated by a comma.
+//On the other hand, the rest pattern is basically used where we would otherwise write variable names separated by commas.
 
-const arr = [7, 8, 9];
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-console.log(badNewArr);
+// 1) Destructuring
+//SPREAD, because on RIGHT side of =
+const arr = [1, 2, ...[3, 4]];
 
-const newArr = [1, 2, ...arr];
-console.log(newArr);
+//REST, because on LEFT side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
 
-console.log(...newArr);
+console.log(a, b, others);
 
-const newMenu = [...restaurant.mainMenu, 'Gnocci'];
-console.log(newMenu);
-
-// Copy array
-const mainMenuCopy = [...restaurant.mainMenu];
-
-// Join 2 arrays
-
-const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
-console.log(menu);
-
-// Iterables: arrays, strings, maps, sets. NOT objects
-const str = 'Kirill';
-const letters = [...str, '', 'G.'];
-console.log(letters);
-console.log(...str);
-
-// Real-world example
-const ingredients = [
-  // prompt("Let's make your pasta! Ingredient 1?"),
-  // prompt("Let's make pasta! Ingredient 2?"),
-  // prompt("Let's make pasta! Ingredient 3?"),
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
 ];
+console.log(pizza, risotto, otherFood);
+//the rest syntax collects all the array after the last variable. It does not include any skipped elements.
 
-console.log(ingredients);
+//Objects
+const { sat, ...weekDays } = restaurant.openingHours;
+console.log(sat, weekDays);
 
-restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
-restaurant.orderPasta(...ingredients);
+// 2) Functions
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 2, 5, 3, 2, 1, 4);
 
-// Objects
+const x = [23, 5, 7];
+add(...x);
 
-const newRestaurant = { foundedIn: 2005, ...restaurant, founder: 'Rocco' };
-console.log(newRestaurant);
+restaurant.orderPizza('dough', 'salami', 'olives', 'tomato');
+restaurant.orderPizza('mushrooms');
 
-const restaurantCopy = { ...restaurant };
-restaurantCopy.name = 'Pizza Squad';
-console.log(restaurantCopy.name);
-console.log(restaurant.name);
+//////////////////////////////////////////////
+// //The Spread Operator TODO (...)
+
+// const arr = [7, 8, 9];
+// const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+// console.log(badNewArr);
+
+// const newArr = [1, 2, ...arr];
+// console.log(newArr);
+
+// console.log(...newArr);
+
+// const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+// console.log(newMenu);
+
+// // Copy array
+// const mainMenuCopy = [...restaurant.mainMenu];
+
+// // Join 2 arrays
+
+// const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// console.log(menu);
+
+// // Iterables: arrays, strings, maps, sets. NOT objects
+// const str = 'Kirill';
+// const letters = [...str, '', 'G.'];
+// console.log(letters);
+// console.log(...str);
+
+// // Real-world example
+// const ingredients = [
+//   // prompt("Let's make your pasta! Ingredient 1?"),
+//   // prompt("Let's make pasta! Ingredient 2?"),
+//   // prompt("Let's make pasta! Ingredient 3?"),
+// ];
+
+// console.log(ingredients);
+
+// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+// restaurant.orderPasta(...ingredients);
+
+// // Objects
+
+// const newRestaurant = { foundedIn: 2005, ...restaurant, founder: 'Rocco' };
+// console.log(newRestaurant);
+
+// const restaurantCopy = { ...restaurant };
+// restaurantCopy.name = 'Pizza Squad';
+// console.log(restaurantCopy.name);
+// console.log(restaurant.name);
 
 // // DESCTUCTURING OBJECT TODO {}
 // restaurant.orderDelivery({

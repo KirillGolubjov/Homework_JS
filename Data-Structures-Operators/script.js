@@ -50,35 +50,43 @@ const restaurant = {
   },
 };
 
-console.log(`---- OR ----`);
-// Use ANY data type, return ANY data type, short-circuiting
-console.log(3 || 'Kirill');
-console.log('' || 'Kirill');
-console.log(true || 0);
-console.log(undefined || null);
-
-console.log(undefined || 0 || '' || 'Hello' || 23 || null);
-
 restaurant.numGuests = 0;
-const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
-console.log(guests1);
+const guests = restaurant.numGuests || 10;
+console.log(guests);
 
-const guests2 = restaurant.numGuests || 10;
-console.log(guests2);
+// Nullish: null and undefined (NOT 0 or '')
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
 
-console.log(`---- AND ----`);
+// console.log(`---- OR ----`);
+// // Use ANY data type, return ANY data type, short-circuiting
+// console.log(3 || 'Kirill');
+// console.log('' || 'Kirill');
+// console.log(true || 0);
+// console.log(undefined || null);
 
-console.log(0 && 'Jonas');
-console.log(7 && 'Jonas');
+// console.log(undefined || 0 || '' || 'Hello' || 23 || null);
 
-console.log('Hello' && 23 && null && 'Kirill');
+// restaurant.numGuests = 0;
+// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guests1);
 
-Practical example
-if (restaurant.orderPizza) {
-  restaurant.orderPizza(`mushrooms`, `spinach`);
-}
+// const guests2 = restaurant.numGuests || 10;
+// console.log(guests2);
 
-restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+// console.log(`---- AND ----`);
+
+// console.log(0 && 'Jonas');
+// console.log(7 && 'Jonas');
+
+// console.log('Hello' && 23 && null && 'Kirill');
+
+// Practical example
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza(`mushrooms`, `spinach`);
+// }
+
+// restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 
 // //The spread and rests syntax both look exactly the same, but they work in opposite ways, depending on where they are used.
 // //So the spread operator is used where we would otherwise write values, separated by a comma.

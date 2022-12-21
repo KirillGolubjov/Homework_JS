@@ -49,32 +49,69 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
-///////////////////////////////////////////////////////////////////
-// Looping Objects: Object Keys, Values, and Entries
 
-// Property NAMES
-const properties = Object.keys(openingHours);
-console.log(properties);
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+  'Risotto',
+]);
+console.log(ordersSet);
+console.log(new Set('Kirill'));
 
-let openStr = `The restauran is open ${properties.length} days: `;
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+ordersSet.add('Garlid Bread');
+ordersSet.add('Garlid Bread');
+ordersSet.delete('Risotto');
+// ordersSet.clear();
+console.log(ordersSet);
 
-for (const day of properties) {
-  openStr += `${day}, `;
-}
-console.log(openStr);
+for (const order of ordersSet) console.log(order);
 
-//Property VALUES
-const values = Object.values(openingHours);
-console.log(values);
+//Example
 
-// Entire OBJECT
-const entries = Object.entries(openingHours);
-console.log(entries);
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
 
-// [key, values]
-for (const [key, { open, close }] of entries) {
-  console.log(`On ${key} we open at ${open} and close at ${close}`);
-}
+console.log(new Set('kirillgolubjov').size);
+
+// How I actually retrieve values out of a set?
+// In sets there are no indexes!
+
+// ///////////////////////////////////////////////////////////////////
+// // Looping Objects: Object Keys, Values, and Entries
+
+// // Property NAMES
+// const properties = Object.keys(openingHours);
+// console.log(properties);
+
+// let openStr = `The restauran is open ${properties.length} days: `;
+
+// for (const day of properties) {
+//   openStr += `${day}, `;
+// }
+// console.log(openStr);
+
+// //Property VALUES
+// const values = Object.values(openingHours);
+// console.log(values);
+
+// // Entire OBJECT
+// const entries = Object.entries(openingHours);
+// console.log(entries);
+
+// // [key, values]
+// for (const [key, { open, close }] of entries) {
+//   console.log(`On ${key} we open at ${open} and close at ${close}`);
+// }
 // ////////////////////////////////////////////////////////////////
 //Optional Chaining (?.)
 

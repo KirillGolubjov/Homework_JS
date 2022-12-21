@@ -50,39 +50,39 @@ const restaurant = {
   },
 };
 
-const rest1 = {
-  name: 'Capri',
-  // numGuests: 20,
-  numGuests: 0,
-};
+// const rest1 = {
+//   name: 'Capri',
+//   // numGuests: 20,
+//   numGuests: 0,
+// };
 
-const rest2 = {
-  name: 'La Piazza',
-  owner: 'Giovanni Rossi',
-};
+// const rest2 = {
+//   name: 'La Piazza',
+//   owner: 'Giovanni Rossi',
+// };
 
-/////////////////////////////////////////////////////////////////
-//Logical Assignment Operators
-// So basically, what the logical and assignment operator does is to assign a value to a variable if it is currently truthy.
+// /////////////////////////////////////////////////////////////////
+// //Logical Assignment Operators
+// // So basically, what the logical and assignment operator does is to assign a value to a variable if it is currently truthy.
 
-//OR assignment operator
-// rest1.numGuests = rest1.numGuests || 10;
-// rest2.numGuests = rest2.numGuests || 10;
-// rest1.numGuests ||= 10;
-// rest2.numGuests ||= 10;
+// //OR assignment operator
+// // rest1.numGuests = rest1.numGuests || 10;
+// // rest2.numGuests = rest2.numGuests || 10;
+// // rest1.numGuests ||= 10;
+// // rest2.numGuests ||= 10;
 
-// nullish assignment operator (null or undefined)
-rest1.numGuests ??= 10;
-rest2.numGuests ??= 10;
+// // nullish assignment operator (null or undefined)
+// rest1.numGuests ??= 10;
+// rest2.numGuests ??= 10;
 
-//AND assignment operator
-// rest1.owner = rest1.owner && '<ANONYMOUS>';
-// rest2.owner = rest2.owner && '<ANONYMOUS>';
-rest1.owner &&= '<ANONYMOUS>';
-rest2.owner &&= '<ANONYMOUS>';
+// //AND assignment operator
+// // rest1.owner = rest1.owner && '<ANONYMOUS>';
+// // rest2.owner = rest2.owner && '<ANONYMOUS>';
+// rest1.owner &&= '<ANONYMOUS>';
+// rest2.owner &&= '<ANONYMOUS>';
 
-console.log(rest1);
-console.log(rest2);
+// console.log(rest1);
+// console.log(rest2);
 /////////////////////////////////////////////////
 // The Nullish Coalescing Operator
 // restaurant.numGuests = 0;
@@ -117,173 +117,173 @@ console.log(rest2);
 // console.log('Hello' && 23 && null && 'Kirill');
 
 // Practical example
-// if (restaurant.orderPizza) {
-//   restaurant.orderPizza(`mushrooms`, `spinach`);
-// }
+if (restaurant.orderPizza) {
+  restaurant.orderPizza(`mushrooms`, `spinach`);
+}
 
-// restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 
-// //The spread and rests syntax both look exactly the same, but they work in opposite ways, depending on where they are used.
-// //So the spread operator is used where we would otherwise write values, separated by a comma.
-// //On the other hand, the rest pattern is basically used where we would otherwise write variable names separated by commas.
+//The spread and rests syntax both look exactly the same, but they work in opposite ways, depending on where they are used.
+//So the spread operator is used where we would otherwise write values, separated by a comma.
+//On the other hand, the rest pattern is basically used where we would otherwise write variable names separated by commas.
 
-// // 1) Destructuring
-// //SPREAD, because on RIGHT side of =
-// const arr = [1, 2, ...[3, 4]];
+// 1) Destructuring
+//SPREAD, because on RIGHT side of =
+const arr = [1, 2, ...[3, 4]];
 
-// //REST, because on LEFT side of =
-// const [a, b, ...others] = [1, 2, 3, 4, 5];
+//REST, because on LEFT side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
 
-// console.log(a, b, others);
+console.log(a, b, others);
 
-// const [pizza, , risotto, ...otherFood] = [
-//   ...restaurant.mainMenu,
-//   ...restaurant.starterMenu,
-// ];
-// console.log(pizza, risotto, otherFood);
-// //the rest syntax collects all the array after the last variable. It does not include any skipped elements.
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+//the rest syntax collects all the array after the last variable. It does not include any skipped elements.
 
-// //Objects
-// const { sat, ...weekDays } = restaurant.openingHours;
-// console.log(sat, weekDays);
+//Objects
+const { sat, ...weekDays } = restaurant.openingHours;
+console.log(sat, weekDays);
 
-// // 2) Functions
-// const add = function (...numbers) {
-//   let sum = 0;
-//   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
-//   console.log(sum);
-// };
-// add(2, 3);
-// add(5, 3, 7, 2);
-// add(8, 2, 5, 3, 2, 1, 4);
+// 2) Functions
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 2, 5, 3, 2, 1, 4);
 
-// const x = [23, 5, 7];
-// add(...x);
+const x = [23, 5, 7];
+add(...x);
 
-// restaurant.orderPizza('dough', 'salami', 'olives', 'tomato');
-// restaurant.orderPizza('mushrooms');
+restaurant.orderPizza('dough', 'salami', 'olives', 'tomato');
+restaurant.orderPizza('mushrooms');
 
-//////////////////////////////////////////////
-// //The Spread Operator TODO (...)
+////////////////////////////////////////////
+//The Spread Operator TODO (...)
 
-// const arr = [7, 8, 9];
-// const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-// console.log(badNewArr);
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
 
-// const newArr = [1, 2, ...arr];
-// console.log(newArr);
+const newArr = [1, 2, ...arr];
+console.log(newArr);
 
-// console.log(...newArr);
+console.log(...newArr);
 
-// const newMenu = [...restaurant.mainMenu, 'Gnocci'];
-// console.log(newMenu);
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
 
-// // Copy array
-// const mainMenuCopy = [...restaurant.mainMenu];
+// Copy array
+const mainMenuCopy = [...restaurant.mainMenu];
 
-// // Join 2 arrays
+// Join 2 arrays
 
-// const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
-// console.log(menu);
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
 
-// // Iterables: arrays, strings, maps, sets. NOT objects
-// const str = 'Kirill';
-// const letters = [...str, '', 'G.'];
-// console.log(letters);
-// console.log(...str);
+// Iterables: arrays, strings, maps, sets. NOT objects
+const str = 'Kirill';
+const letters = [...str, '', 'G.'];
+console.log(letters);
+console.log(...str);
 
-// // Real-world example
-// const ingredients = [
-//   // prompt("Let's make your pasta! Ingredient 1?"),
-//   // prompt("Let's make pasta! Ingredient 2?"),
-//   // prompt("Let's make pasta! Ingredient 3?"),
-// ];
+// Real-world example
+const ingredients = [
+  // prompt("Let's make your pasta! Ingredient 1?"),
+  // prompt("Let's make pasta! Ingredient 2?"),
+  // prompt("Let's make pasta! Ingredient 3?"),
+];
 
-// console.log(ingredients);
+console.log(ingredients);
 
-// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
-// restaurant.orderPasta(...ingredients);
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+restaurant.orderPasta(...ingredients);
 
-// // Objects
+// Objects
 
-// const newRestaurant = { foundedIn: 2005, ...restaurant, founder: 'Rocco' };
-// console.log(newRestaurant);
+const newRestaurant = { foundedIn: 2005, ...restaurant, founder: 'Rocco' };
+console.log(newRestaurant);
 
-// const restaurantCopy = { ...restaurant };
-// restaurantCopy.name = 'Pizza Squad';
-// console.log(restaurantCopy.name);
-// console.log(restaurant.name);
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Pizza Squad';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
 
-// // DESCTUCTURING OBJECT TODO {}
-// restaurant.orderDelivery({
-//   time: '12:05',
-//   address: 'Paepargi 41-3',
-//   mainIndex: 2,
-//   starterIndex: 2,
-// });
+// DESCTUCTURING OBJECT TODO {}
+restaurant.orderDelivery({
+  time: '12:05',
+  address: 'Paepargi 41-3',
+  mainIndex: 2,
+  starterIndex: 2,
+});
 
-// restaurant.orderDelivery({
-//   address: 'Tuha 7-2',
-//   starterIndex: 1,
-// });
+restaurant.orderDelivery({
+  address: 'Tuha 7-2',
+  starterIndex: 1,
+});
 
-// const { name, openingHours, categories } = restaurant;
-// console.log(name, openingHours, categories);
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
 
-// const {
-//   name: restaurantName,
-//   openingHours: hours,
-//   categories: tags,
-// } = restaurant;
-// console.log(restaurantName, hours, tags);
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
 
-// //Default values
-// const { menu = [], starterMenu: starters = [] } = restaurant;
-// console.log(menu, starters);
+//Default values
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
 
-// // Mutating variables
-// let a = 111;
-// let b = 999;
-// const obj = { a: 23, b: 7, c: 14 };
+// Mutating variables
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
 
-// ({ a, b } = obj);
-// console.log(a, b);
+({ a, b } = obj);
+console.log(a, b);
 
-// // Nested objects
+// Nested objects
 
-// const {
-//   fri: { open: o, close: c },
-// } = openingHours;
-// console.log(o, c);
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+console.log(o, c);
 
-// /////////////////////////////////////////
-// // DESCTUCTURING ARRAYS TODO []
+/////////////////////////////////////////
+// DESCTUCTURING ARRAYS TODO []
 
-// let [main, , secondary] = restaurant.categories;
+let [main, , secondary] = restaurant.categories;
+console.log(main, secondary);
+
+// Switching variables
+// const temp = main;
+// main = secondary;
+// secondary = temp;
 // console.log(main, secondary);
 
-// // Switching variables
-// // const temp = main;
-// // main = secondary;
-// // secondary = temp;
-// // console.log(main, secondary);
+[main, secondary] = [secondary, main];
+console.log(main, secondary);
 
-// [main, secondary] = [secondary, main];
-// console.log(main, secondary);
+// Receive 2 return values from a function
+const [starter, mainCourse] = restaurant.order(3, 1);
+console.log(starter, mainCourse);
 
-// // Receive 2 return values from a function
-// const [starter, mainCourse] = restaurant.order(3, 1);
-// console.log(starter, mainCourse);
+//Nested destructuring
+const nested = [2, 4, [5, 6]];
+// const [i, , j] = nested;
+// console.log(i, j);
+const [i, , [j, k]] = nested;
+console.log(i, j, k);
 
-// //Nested destructuring
-// const nested = [2, 4, [5, 6]];
-// // const [i, , j] = nested;
-// // console.log(i, j);
-// const [i, , [j, k]] = nested;
-// console.log(i, j, k);
+//Default values
+const [p = 1, q = 1, r = 1] = [8, 2];
+console.log(p, q, r);
 
-// //Default values
-// const [p = 1, q = 1, r = 1] = [8, 2];
-// console.log(p, q, r);
-
-// // This can be useful, when we get data from an API.
+// This can be useful, when we get data from an API.

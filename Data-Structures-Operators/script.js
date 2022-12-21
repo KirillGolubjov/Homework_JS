@@ -49,39 +49,73 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+////////////////////////////////////////////////////
+// // MAPS
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+console.log(rest.set(2, 'Tallinn, Estonia'));
 
-const ordersSet = new Set([
-  'Pasta',
-  'Pizza',
-  'Risotto',
-  'Pasta',
-  'Pizza',
-  'Risotto',
-]);
-console.log(ordersSet);
-console.log(new Set('Kirill'));
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open!')
+  .set(false, 'We are closed!');
 
-console.log(ordersSet.size);
-console.log(ordersSet.has('Pizza'));
-console.log(ordersSet.has('Bread'));
-ordersSet.add('Garlid Bread');
-ordersSet.add('Garlid Bread');
-ordersSet.delete('Risotto');
-// ordersSet.clear();
-console.log(ordersSet);
+// console.log(rest.get('name'));
+// console.log(rest.get(true));
+// console.log(rest.get(1));
 
-for (const order of ordersSet) console.log(order);
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('closed')));
 
-//Example
+console.log(rest.has('categories'));
+rest.delete(2);
+// rest.clear();
 
-const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
-const staffUnique = [...new Set(staff)];
-console.log(staffUnique);
-console.log(
-  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
-);
+const arr = [1, 2];
+rest.set(arr, 'Test');
+rest.set(document.querySelector('h1'), 'Heading');
+console.log(rest);
+console.log(rest.size);
 
-console.log(new Set('kirillgolubjov').size);
+console.log(rest.get(arr));
+
+//////////////////////////////////
+// //SETS
+// const ordersSet = new Set([
+//   'Pasta',
+//   'Pizza',
+//   'Risotto',
+//   'Pasta',
+//   'Pizza',
+//   'Risotto',
+// ]);
+// console.log(ordersSet);
+// console.log(new Set('Kirill'));
+
+// console.log(ordersSet.size);
+// console.log(ordersSet.has('Pizza'));
+// console.log(ordersSet.has('Bread'));
+// ordersSet.add('Garlid Bread');
+// ordersSet.add('Garlid Bread');
+// ordersSet.delete('Risotto');
+// // ordersSet.clear();
+// console.log(ordersSet);
+
+// for (const order of ordersSet) console.log(order);
+
+// //Example
+
+// const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+// const staffUnique = [...new Set(staff)];
+// console.log(staffUnique);
+// console.log(
+//   new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+// );
+
+// console.log(new Set('kirillgolubjov').size);
 
 // How I actually retrieve values out of a set?
 // In sets there are no indexes!

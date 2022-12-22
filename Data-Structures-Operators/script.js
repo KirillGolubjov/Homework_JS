@@ -49,47 +49,114 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+// // Working with Strings: part2
+const airline = 'air Baltic Estonia';
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+console.log('kirill'.toUpperCase());
+
+// Fix capitalization in name
+const passenger = 'nAdeZhDa'; // Nadezhda
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+const correctPassengerName = function (name) {
+  const passengerLower = name.toLowerCase();
+  const passengerCorrect =
+    passengerLower[0].toUpperCase() + passengerLower.slice(1);
+  console.log(passengerCorrect);
+};
+correctPassengerName('vOlodIaka');
+correctPassengerName('kiRjuha');
+correctPassengerName('aleX');
+
+// Comparing email
+const email = 'kirillcnz@gmail.com';
+const loginEmail = '  Kirillcnz@Gmail.Com \n';
+
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+// replacing
+const priceEU = '288,97€';
+const priceUS = priceEU.replace('€', '$').replace(',', '.');
+console.log(priceUS);
+
+const announcement =
+  'All passengers come to boarding door 23. Boarding door 23!';
+console.log(announcement.replaceAll('door', 'gate'));
+
+console.log(announcement.replace(/door/g, 'gate'));
+
+// Booleans
+const plane = 'Airbus 320neo';
+console.log(plane.includes('A320'));
+console.log(plane.startsWith('Air'));
+
+if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
+  console.log('Part of the new airbus family');
+}
+
+// Practice exercise
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are not allowed on board');
+  } else {
+    console.log(`welcome aboard!`);
+  }
+};
+checkBaggage('I have a laptop, some Food and a pocker Knife');
+checkBaggage('Socks and camera');
+checkBaggage('Got some snacks and a gun for protection');
 ////////////////////////////////////////////////////
 // // WORKING WITH STRINGS
 
-const airline = 'air Baltic Estonia';
-const plane = 'A320';
+// const airline = 'air Baltic Estonia';
+// const plane = 'A320';
 
-console.log(plane[0]);
-console.log(plane[1]);
-console.log(plane[2]);
-console.log(plane[0]);
+// console.log(plane[0]);
+// console.log(plane[1]);
+// console.log(plane[2]);
+// console.log(plane[0]);
 
-console.log(airline.length);
-console.log('b737'.length);
+// console.log(airline.length);
+// console.log('b737'.length);
 
-console.log(airline.indexOf('r'));
-console.log(airline.lastIndexOf('r'));
-console.log(airline.indexOf('Estonia'));
+// console.log(airline.indexOf('r'));
+// console.log(airline.lastIndexOf('r'));
+// console.log(airline.indexOf('Estonia'));
 
-console.log(airline.slice(4));
-console.log(airline.slice(4, 7));
+// console.log(airline.slice(4));
+// console.log(airline.slice(4, 7));
 
-console.log(airline.slice(0, airline.indexOf(' '))); // extract first word
-console.log(airline.slice(airline.lastIndexOf(' ') + 1)); //extract last word
+// console.log(airline.slice(0, airline.indexOf(' '))); // extract first word
+// console.log(airline.slice(airline.lastIndexOf(' ') + 1)); //extract last word
 
-console.log(airline.slice(-3)); //exract from the end
-console.log(airline.slice(1, -1)); // exract from the start and from the end
+// console.log(airline.slice(-3)); //exract from the end
+// console.log(airline.slice(1, -1)); // exract from the start and from the end
 
-const checkMiddleSeat = function (seat) {
-  // B and E are middle seats
-  const s = seat.slice(-1);
-  if (s === 'B' || s === 'E') {
-    console.log(`You got the middle seat...:(`);
-  } else console.log(`You got lucky!`);
-};
-checkMiddleSeat('11B');
-checkMiddleSeat('23C');
-checkMiddleSeat('3E');
+// const checkMiddleSeat = function (seat) {
+//   // B and E are middle seats
+//   const s = seat.slice(-1);
+//   if (s === 'B' || s === 'E') {
+//     console.log(`You got the middle seat...:(`);
+//   } else console.log(`You got lucky!`);
+// };
+// checkMiddleSeat('11B');
+// checkMiddleSeat('23C');
+// checkMiddleSeat('3E');
 
-console.log(typeof new String('jonas')); // When the operation is done, it is back to being a string.
+// console.log(typeof new String('jonas')); // When the operation is done, it is back to being a string.
 
-console.log(typeof new String('jonas').slice(1)); // It is here ^^
+// console.log(typeof new String('jonas').slice(1)); // It is here ^^
 
 ////////////////////////////////////////////////////
 // // MAPS iteration

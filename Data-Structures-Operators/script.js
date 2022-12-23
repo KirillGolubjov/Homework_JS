@@ -49,10 +49,35 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+///////////////////////////////////////
+// Coding Challenge #4
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const rows = text.split('\n');
+  for (const [i, row] of rows.entries()) {
+    // const word = row.toLowerCase().trim().split('_');
+    // const [first, second] = [...word];
+    // const second2 = second[0].toUpperCase() + second.slice(1);
+    // const output = `${first}${second2}`;
+    const [first, second] = row.toLowerCase().trim().split('_');
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+    // console.log(output);
+
+    console.log(`${output.padEnd(20)} ${'✅'.repeat(i + 1)}`);
+  }
+});
+
 ////////////////////////////////////////////////////
 // // WORKING WITH STRINGS - Part 3
 
-// Split and join
+// // Split and join
 // console.log('a+very+nice+string'.split('+'));
 // console.log('Kirill Golubjov'.split(' '));
 
@@ -61,48 +86,48 @@ const restaurant = {
 // const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
 // console.log(newName);
 
-const capitalizeName = function (name) {
-  const names = name.split(' ');
-  const namesUpper = [];
-  for (const n of names) {
-    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
-    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
-  }
-  console.log(namesUpper.join(' '));
+// const capitalizeName = function (name) {
+//   const names = name.split(' ');
+//   const namesUpper = [];
+//   for (const n of names) {
+//     // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+//     namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+//   }
+//   console.log(namesUpper.join(' '));
 
-  // console.log(name[0].toUpperCase() + name.slice(1).toLowerCase());
-  // console.log(name[0].toUpperCase().split('') + name.slice(1).toLowerCase());
-};
+//   // console.log(name[0].toUpperCase() + name.slice(1).toLowerCase());
+//   // console.log(name[0].toUpperCase().split('') + name.slice(1).toLowerCase());
+// };
 
-capitalizeName('jessica ann smith davis');
-capitalizeName('kirill golubjov');
+// capitalizeName('jessica ann smith davis');
+// capitalizeName('kirill golubjov');
 
-// Padding
-const message = 'Go to gate 23!';
-console.log(message.padStart(20, '+').padEnd(30, '+'));
-console.log('Kirill'.padStart(20, '+').padEnd(30, '+'));
+// // Padding
+// const message = 'Go to gate 23!';
+// console.log(message.padStart(20, '+').padEnd(30, '+'));
+// console.log('Kirill'.padStart(20, '+').padEnd(30, '+'));
 
-const maskCreditCard = function (number) {
-  const str = number + '';
-  const last = str.slice(-4).padStart(str.length, '*');
-  console.log(last);
-  // const last = str.slice(-4);
-  // return last.padStart(str.length, '*');
-};
-maskCreditCard(21246367);
-maskCreditCard(342356262626642);
-maskCreditCard('342356262624747');
+// const maskCreditCard = function (number) {
+//   const str = number + '';
+//   const last = str.slice(-4).padStart(str.length, '*');
+//   console.log(last);
+//   // const last = str.slice(-4);
+//   // return last.padStart(str.length, '*');
+// };
+// maskCreditCard(21246367);
+// maskCreditCard(342356262626642);
+// maskCreditCard('342356262624747');
 
-// Repeat
+// // Repeat
 
-const message2 = 'Bad weather... All Departures Delayed... ';
-console.log(message2.repeat(5));
+// const message2 = 'Bad weather... All Departures Delayed... ';
+// console.log(message2.repeat(5));
 
-const planesInLine = function (n) {
-  console.log(`There are ${n} planes in line ${'!'.repeat(n)}`);
-};
+// const planesInLine = function (n) {
+//   console.log(`There are ${n} planes in line ${'!'.repeat(n)}`);
+// };
 
-planesInLine(5);
+// planesInLine(5);
 ////////////////////////////////////////////////////
 // // WORKING WITH STRINGS - Part 2
 

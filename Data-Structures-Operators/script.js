@@ -49,75 +49,132 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
-// // Working with Strings: part2
-const airline = 'air Baltic Estonia';
-
-console.log(airline.toLowerCase());
-console.log(airline.toUpperCase());
-console.log('kirill'.toUpperCase());
-
-// Fix capitalization in name
-const passenger = 'nAdeZhDa'; // Nadezhda
-const passengerLower = passenger.toLowerCase();
-const passengerCorrect =
-  passengerLower[0].toUpperCase() + passengerLower.slice(1);
-console.log(passengerCorrect);
-
-const correctPassengerName = function (name) {
-  const passengerLower = name.toLowerCase();
-  const passengerCorrect =
-    passengerLower[0].toUpperCase() + passengerLower.slice(1);
-  console.log(passengerCorrect);
-};
-correctPassengerName('vOlodIaka');
-correctPassengerName('kiRjuha');
-correctPassengerName('aleX');
-
-// Comparing email
-const email = 'kirillcnz@gmail.com';
-const loginEmail = '  Kirillcnz@Gmail.Com \n';
-
-// const lowerEmail = loginEmail.toLowerCase();
-// const trimmedEmail = lowerEmail.trim();
-
-const normalizedEmail = loginEmail.toLowerCase().trim();
-console.log(normalizedEmail);
-console.log(email === normalizedEmail);
-
-// replacing
-const priceEU = '288,97€';
-const priceUS = priceEU.replace('€', '$').replace(',', '.');
-console.log(priceUS);
-
-const announcement =
-  'All passengers come to boarding door 23. Boarding door 23!';
-console.log(announcement.replaceAll('door', 'gate'));
-
-console.log(announcement.replace(/door/g, 'gate'));
-
-// Booleans
-const plane = 'Airbus 320neo';
-console.log(plane.includes('A320'));
-console.log(plane.startsWith('Air'));
-
-if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
-  console.log('Part of the new airbus family');
-}
-
-// Practice exercise
-const checkBaggage = function (items) {
-  const baggage = items.toLowerCase();
-  if (baggage.includes('knife') || baggage.includes('gun')) {
-    console.log('You are not allowed on board');
-  } else {
-    console.log(`welcome aboard!`);
-  }
-};
-checkBaggage('I have a laptop, some Food and a pocker Knife');
-checkBaggage('Socks and camera');
-checkBaggage('Got some snacks and a gun for protection');
 ////////////////////////////////////////////////////
-// // WORKING WITH STRINGS
+// // WORKING WITH STRINGS - Part 3
+
+// Split and join
+// console.log('a+very+nice+string'.split('+'));
+// console.log('Kirill Golubjov'.split(' '));
+
+// const [firstName, lastName] = 'Kirill Golubjov'.split(' ');
+
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const namesUpper = [];
+  for (const n of names) {
+    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(' '));
+
+  // console.log(name[0].toUpperCase() + name.slice(1).toLowerCase());
+  // console.log(name[0].toUpperCase().split('') + name.slice(1).toLowerCase());
+};
+
+capitalizeName('jessica ann smith davis');
+capitalizeName('kirill golubjov');
+
+// Padding
+const message = 'Go to gate 23!';
+console.log(message.padStart(20, '+').padEnd(30, '+'));
+console.log('Kirill'.padStart(20, '+').padEnd(30, '+'));
+
+const maskCreditCard = function (number) {
+  const str = number + '';
+  const last = str.slice(-4).padStart(str.length, '*');
+  console.log(last);
+  // const last = str.slice(-4);
+  // return last.padStart(str.length, '*');
+};
+maskCreditCard(21246367);
+maskCreditCard(342356262626642);
+maskCreditCard('342356262624747');
+
+// Repeat
+
+const message2 = 'Bad weather... All Departures Delayed... ';
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'!'.repeat(n)}`);
+};
+
+planesInLine(5);
+////////////////////////////////////////////////////
+// // WORKING WITH STRINGS - Part 2
+
+// const airline = 'air Baltic Estonia';
+
+// console.log(airline.toLowerCase());
+// console.log(airline.toUpperCase());
+// console.log('kirill'.toUpperCase());
+
+// // Fix capitalization in name
+// const passenger = 'nAdeZhDa'; // Nadezhda
+// const passengerLower = passenger.toLowerCase();
+// const passengerCorrect =
+//   passengerLower[0].toUpperCase() + passengerLower.slice(1);
+// console.log(passengerCorrect);
+
+// const correctPassengerName = function (name) {
+//   const passengerLower = name.toLowerCase();
+//   const passengerCorrect =
+//     passengerLower[0].toUpperCase() + passengerLower.slice(1);
+//   console.log(passengerCorrect);
+// };
+// correctPassengerName('vOlodIaka');
+// correctPassengerName('kiRjuha');
+// correctPassengerName('aleX');
+
+// // Comparing email
+// const email = 'kirillcnz@gmail.com';
+// const loginEmail = '  Kirillcnz@Gmail.Com \n';
+
+// // const lowerEmail = loginEmail.toLowerCase();
+// // const trimmedEmail = lowerEmail.trim();
+
+// const normalizedEmail = loginEmail.toLowerCase().trim();
+// console.log(normalizedEmail);
+// console.log(email === normalizedEmail);
+
+// // replacing
+// const priceEU = '288,97€';
+// const priceUS = priceEU.replace('€', '$').replace(',', '.');
+// console.log(priceUS);
+
+// const announcement =
+//   'All passengers come to boarding door 23. Boarding door 23!';
+// console.log(announcement.replaceAll('door', 'gate'));
+
+// console.log(announcement.replace(/door/g, 'gate'));
+
+// // Booleans
+// const plane = 'Airbus 320neo';
+// console.log(plane.includes('A320'));
+// console.log(plane.startsWith('Air'));
+
+// if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
+//   console.log('Part of the new airbus family');
+// }
+
+// // Practice exercise
+// const checkBaggage = function (items) {
+//   const baggage = items.toLowerCase();
+//   if (baggage.includes('knife') || baggage.includes('gun')) {
+//     console.log('You are not allowed on board');
+//   } else {
+//     console.log(`welcome aboard!`);
+//   }
+// };
+// checkBaggage('I have a laptop, some Food and a pocker Knife');
+// checkBaggage('Socks and camera');
+// checkBaggage('Got some snacks and a gun for protection');
+
+////////////////////////////////////////////////////
+// // WORKING WITH STRINGS - Part 1
 
 // const airline = 'air Baltic Estonia';
 // const plane = 'A320';

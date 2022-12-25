@@ -110,28 +110,82 @@
 
 /////////////////////////////////////////////////////
 // // Functions Returning Functions
-const greet = function (greeting) {
-  return function (name) {
-    console.log(`${greeting} ${name}`);
-  };
+// const greet = function (greeting) {
+//   return function (name) {
+//     console.log(`${greeting} ${name}`);
+//   };
+// };
+
+// const greeterHey = greet('Hey');
+// greeterHey('Kirill');
+// greeterHey('Steven');
+
+// greet('Hello')('Kirill');
+
+// //Challenge
+// const greetArr = greeting => nickname => console.log(`${greeting} ${nickname}`);
+// greetArr('Yo')('Chepa');
+
+// const farewell = bye => {
+//   return nickname => {
+//     console.log(`${bye} ${nickname}!`);
+//   };
+// };
+
+// const gBye = farewell('Bye');
+// gBye('Serz');
+// farewell('Bye bye')('my friend');
+
+///////////////////////////////////////////////////////////////////////////////
+// // The call and apply Methods
+
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  // book: function (){}
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
 };
 
-const greeterHey = greet('Hey');
-greeterHey('Kirill');
-greeterHey('Steven');
+lufthansa.book(239, 'Kirill Golubjov');
+lufthansa.book(635, 'Nadezhda Volokitina');
 
-greet('Hello')('Kirill');
-
-//Challenge
-const greetArr = greeting => nickname => console.log(`${greeting} ${nickname}`);
-greetArr('Yo')('Chepa');
-
-const farewell = bye => {
-  return nickname => {
-    console.log(`${bye} ${nickname}!`);
-  };
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
 };
 
-const gBye = farewell('Bye');
-gBye('Serz');
-farewell('Bye bye')('my friend');
+const book = lufthansa.book;
+
+// Does NOT Work
+//book(23, 'Anton Golubjov');
+
+// Call method
+book.call(eurowings, 23, 'Antonina Golubjova');
+console.log(eurowings);
+
+book.call(lufthansa, 239, 'Aleksandr Golubjov');
+console.log(lufthansa);
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
+book.call(swiss, 283, 'Anton Golubjov');
+console.log(swiss);
+
+// Apply method
+const flightData = [583, 'Suzanna Ovcharkovich'];
+book.apply(swiss, flightData);
+
+console.log(swiss);
+
+book.call(swiss, ...flightData); // same is .apply method

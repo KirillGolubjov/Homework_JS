@@ -81,7 +81,18 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
-console.log(containerMovements.innerHTML);
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+createUsernames(accounts);
+console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -234,28 +245,28 @@ GOOD LUCK 😀
 ////////////////////////////////////////////////////////
 // // Data Transformations: map, filter, reduce
 
-const eurToUsd = 1.1;
+// const eurToUsd = 1.1;
 
 // const movementsUSD = movements.map(function (mov) {
 //   return mov * eurToUsd;
 // });
 
 // mov => RETURN ... value
-const movementsUSD = movements.map(mov => mov * eurToUsd);
+// const movementsUSD = movements.map(mov => mov * eurToUsd);
 
-console.log(movements);
-console.log(movementsUSD);
+// console.log(movements);
+// console.log(movementsUSD);
 
-const movementsUSDfor = [];
-for (const mov of movements) {
-  movementsUSDfor.push(mov * eurToUsd);
-}
-console.log(movementsUSDfor);
+// const movementsUSDfor = [];
+// for (const mov of movements) {
+//   movementsUSDfor.push(mov * eurToUsd);
+// }
+// console.log(movementsUSDfor);
 
-const movementsDescriptions = movements.map(
-  (mov, i) =>
-    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
-      mov
-    )}`
-);
-console.log(movementsDescriptions);
+// const movementsDescriptions = movements.map(
+//   (mov, i) =>
+//     `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+//       mov
+//     )}`
+// );
+// console.log(movementsDescriptions);

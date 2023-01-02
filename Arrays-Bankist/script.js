@@ -622,39 +622,99 @@ GOOD LUCK 😀
 // movements.sort((a, b) => b - a);
 // console.log(movements);
 
-const arr = [1, 2, 3, 4, 5, 6, 7];
-console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+//////////////////////////////////////////
+// // More Ways of Creating and Filling Arrays
 
-// Empty arrays + fill method
-const x = new Array(7);
-console.log(x);
-// console.log(x.map(() => 5));
+// const arr = [1, 2, 3, 4, 5, 6, 7];
+// console.log(new Array(1, 2, 3, 4, 5, 6, 7));
 
-x.fill(1);
-console.log(x);
+// // Empty arrays + fill method
+// const x = new Array(7);
+// console.log(x);
+// // console.log(x.map(() => 5));
 
-arr.fill(23, 4, 6);
-console.log(arr);
+// x.fill(1);
+// console.log(x);
 
-// Array.from
-const y = Array.from({ length: 7 }, () => 1);
-console.log(y);
+// arr.fill(23, 4, 6);
+// console.log(arr);
 
-const z = Array.from({ length: 7 }, (_, i) => i + 1);
-console.log(z);
+// // Array.from
+// const y = Array.from({ length: 7 }, () => 1);
+// console.log(y);
 
-// An Array with 100 random dice rolls
-const random = Array.from({ length: 100 }, (_, i) =>
-  Math.round(Math.random(i) * 5 + 1)
-);
-console.log(random);
+// const z = Array.from({ length: 7 }, (_, i) => i + 1);
+// console.log(z);
 
-labelBalance.addEventListener('click', function () {
-  const movementsUI = Array.from(
-    document.querySelectorAll('.movements__value'),
-    el => Number(el.textContent.replace('€', ''))
+// // An Array with 100 random dice rolls
+// const random = Array.from({ length: 100 }, (_, i) =>
+//   Math.round(Math.random(i) * 5 + 1)
+// );
+// console.log(random);
+
+// labelBalance.addEventListener('click', function () {
+//   const movementsUI = Array.from(
+//     document.querySelectorAll('.movements__value'),
+//     el => Number(el.textContent.replace('€', ''))
+//   );
+//   console.log(movementsUI);
+
+//   const movementsUI2 = [...document.querySelectorAll('.movements__value')];
+// });
+
+/////////////////////////////////////////////////////////
+// Array Methods Practice
+// 1.
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((sum, cur) => sum + cur, 0);
+
+console.log(bankDepositSum);
+
+// 2.
+// const numDeposits1000 = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov >= 1000).length;
+
+const numDeposits1000 = accounts
+  .flatMap(acc => acc.movements)
+  // .reduce((count, cur) => (cur >= 1000 ? count + 1 : count), 0);
+  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+
+console.log(numDeposits1000);
+
+let a = 10;
+console.log(a++);
+console.log(++a);
+
+// 3.
+const { deposits, withdrawals } = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+      sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+      return sums;
+    },
+    { deposits: 0, withdrawals: 0 }
   );
-  console.log(movementsUI);
+console.log(deposits, withdrawals);
 
-  const movementsUI2 = [...document.querySelectorAll('.movements__value')];
-});
+// 4.
+// this is a nice title -> This Is a Nice Title
+const convertTitleCase = function (title) {
+  const capitalize = str => str[0].toUpperCase() + str.slice(1);
+
+  const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
+
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(word => (exceptions.includes(word) ? word : capitalize(word)))
+    .join(' ');
+  return capitalize(titleCase);
+};
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG title but not too long'));
+console.log(convertTitleCase('and here is another title with an EXAMPLE'));

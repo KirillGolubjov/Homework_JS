@@ -351,16 +351,43 @@ btnSort.addEventListener('click', function (e) {
 // Nth
 
 // // Numeric Separators
-const diameter = 287_460_000_000;
-console.log(diameter);
+// const diameter = 287_460_000_000;
+// console.log(diameter);
 
-const price = 345_99;
-console.log(price);
+// const price = 345_99;
+// console.log(price);
 
-const transferFee1 = 15_00;
-const transferFee2 = 1_500;
+// const transferFee1 = 15_00;
+// const transferFee2 = 1_500;
 
-const PI = 3.14_15;
-console.log(PI);
+// const PI = 3.14_15;
+// console.log(PI);
 
-console.log(Number('230 000'));
+// console.log(Number('230 000'));
+
+// Working with BigInt
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+
+console.log(4848583468564562462424662n);
+console.log(BigInt(48485));
+
+// Operations
+console.log(10000n + 10000n);
+console.log(5436754375474574574575474524n * 1000000n);
+
+const huge = 272653943864524485345n;
+const num = 23;
+console.log(huge * BigInt(num));
+
+// Exceptions
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n);
+console.log(20n == '20');
+
+console.log(huge + ' is Really BIG!!!');
+
+// Divisions
+console.log(11n / 3n);
+console.log(10 / 3);

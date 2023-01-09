@@ -107,3 +107,24 @@ console.log(kirill.species);
 
 console.log(kirill.hasOwnProperty('firstName'));
 console.log(kirill.hasOwnProperty('species'));
+
+console.log(kirill.__proto__);
+// Object.prototype (top of prototype chain)
+console.log(kirill.__proto__.__proto__);
+console.log(kirill.__proto__.__proto__.__proto__);
+
+console.dir(Person.prototype.constructor);
+
+const arr = [3, 6, 5, 6, 7, 7, 3]; // new Array === []
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+
+console.log(arr.__proto__.__proto__);
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+console.log(arr.unique());
+
+const h1 = document.querySelector('h1');
+console.dir(x => x + 1);

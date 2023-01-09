@@ -83,3 +83,27 @@ const jay = 'Jay';
 
 console.log(kirill instanceof Person);
 console.log(jay instanceof Person);
+
+// Prototypes
+console.log(Person.prototype);
+
+Person.prototype.calcAge = function () {
+  console.log(2023 - this.birthYear);
+};
+
+kirill.calcAge();
+anton.calcAge();
+
+console.log(kirill.__proto__);
+console.log(nadezhda.__proto__ === Person.prototype);
+
+console.log(Person.prototype.isPrototypeOf(kirill));
+console.log(Person.prototype.isPrototypeOf(Person));
+
+// .prototypeOfLinkedObjects
+
+Person.prototype.species = 'Homo Sapiens';
+console.log(kirill.species);
+
+console.log(kirill.hasOwnProperty('firstName'));
+console.log(kirill.hasOwnProperty('species'));

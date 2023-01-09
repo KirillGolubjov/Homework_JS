@@ -41,79 +41,79 @@ DATA CAR 1: 'Rivian' going at 120 km/h, with a charge of 23%
 GOOD LUCK 😀
 */
 
-const Person = function (firstName, birthYear) {
-  // Instance properties
-  this.firstName = firstName;
-  this.birthYear = birthYear;
+// const Person = function (firstName, birthYear) {
+//   // Instance properties
+//   this.firstName = firstName;
+//   this.birthYear = birthYear;
 
-  // Never do this
-  //   this.calcAge = function () {
-  //     console.log(2037 - this.birthYear);
-  //   };
-};
+//   // Never do this
+//   //   this.calcAge = function () {
+//   //     console.log(2037 - this.birthYear);
+//   //   };
+// };
 
-const kirill = new Person('Kirill', 1990);
-console.log(kirill);
+// const kirill = new Person('Kirill', 1990);
+// console.log(kirill);
 
-// 1. New {} is created
-// 2. function is called, this = {}
-// 3. {} linked to prototype
-// 4. function automatically return {}
+// // 1. New {} is created
+// // 2. function is called, this = {}
+// // 3. {} linked to prototype
+// // 4. function automatically return {}
 
-const nadezhda = new Person('Nadezhda', 1989);
-console.log(nadezhda);
-const anton = new Person('Anton', 1986);
-console.log(anton);
+// const nadezhda = new Person('Nadezhda', 1989);
+// console.log(nadezhda);
+// const anton = new Person('Anton', 1986);
+// console.log(anton);
 
-const jay = 'Jay';
+// const jay = 'Jay';
 
-console.log(kirill instanceof Person);
-console.log(jay instanceof Person);
+// console.log(kirill instanceof Person);
+// console.log(jay instanceof Person);
 
-// Prototypes
-console.log(Person.prototype);
+// // Prototypes
+// console.log(Person.prototype);
 
-Person.prototype.calcAge = function () {
-  console.log(2023 - this.birthYear);
-};
+// Person.prototype.calcAge = function () {
+//   console.log(2023 - this.birthYear);
+// };
 
-kirill.calcAge();
-anton.calcAge();
+// kirill.calcAge();
+// anton.calcAge();
 
-console.log(kirill.__proto__);
-console.log(nadezhda.__proto__ === Person.prototype);
+// console.log(kirill.__proto__);
+// console.log(nadezhda.__proto__ === Person.prototype);
 
-console.log(Person.prototype.isPrototypeOf(kirill));
-console.log(Person.prototype.isPrototypeOf(Person));
+// console.log(Person.prototype.isPrototypeOf(kirill));
+// console.log(Person.prototype.isPrototypeOf(Person));
 
-// .prototypeOfLinkedObjects
+// // .prototypeOfLinkedObjects
 
-Person.prototype.species = 'Homo Sapiens';
-console.log(kirill.species);
+// Person.prototype.species = 'Homo Sapiens';
+// console.log(kirill.species);
 
-console.log(kirill.hasOwnProperty('firstName'));
-console.log(kirill.hasOwnProperty('species'));
+// console.log(kirill.hasOwnProperty('firstName'));
+// console.log(kirill.hasOwnProperty('species'));
 
-console.log(kirill.__proto__);
-// Object.prototype (top of prototype chain)
-console.log(kirill.__proto__.__proto__);
-console.log(kirill.__proto__.__proto__.__proto__);
+// console.log(kirill.__proto__);
+// // Object.prototype (top of prototype chain)
+// console.log(kirill.__proto__.__proto__);
+// console.log(kirill.__proto__.__proto__.__proto__);
 
-console.dir(Person.prototype.constructor);
+// console.dir(Person.prototype.constructor);
 
-const arr = [3, 6, 5, 6, 7, 7, 3]; // new Array === []
-console.log(arr.__proto__);
-console.log(arr.__proto__ === Array.prototype);
+// const arr = [3, 6, 5, 6, 7, 7, 3]; // new Array === []
+// console.log(arr.__proto__);
+// console.log(arr.__proto__ === Array.prototype);
 
-console.log(arr.__proto__.__proto__);
+// console.log(arr.__proto__.__proto__);
 
-Array.prototype.unique = function () {
-  return [...new Set(this)];
-};
-console.log(arr.unique());
+// Array.prototype.unique = function () {
+//   return [...new Set(this)];
+// };
+// console.log(arr.unique());
 
-const h1 = document.querySelector('h1');
-console.dir(x => x + 1);
+// const h1 = document.querySelector('h1');
+// console.dir(x => x + 1);
 
 ///////////////////////////////////////
 // Coding Challenge #1
@@ -130,38 +130,73 @@ DATA CAR 2: 'Mercedes' going at 95 km/h
 GOOD LUCK 😀
 */
 
-const Car = function (carMake, carSpeed) {
-  this.carMake = carMake;
-  this.carSpeed = carSpeed;
-};
-const bmw = new Car('BMW', 120);
-const mb = new Car('Mercedes', 95);
+// const Car = function (carMake, carSpeed) {
+//   this.carMake = carMake;
+//   this.carSpeed = carSpeed;
+// };
+// const bmw = new Car('BMW', 120);
+// const mb = new Car('Mercedes', 95);
 
-console.log(bmw);
-console.log(mb);
+// console.log(bmw);
+// console.log(mb);
 
-function getNumbers(str) {
-  return str.replace(/\D/g, '');
+// function getNumbers(str) {
+//   return str.replace(/\D/g, '');
+// }
+
+// Car.prototype.accelerate = function () {
+//   this.carSpeed += 10;
+//   console.log(`${this.carMake} going at ${this.carSpeed} km/h`);
+// };
+
+// Car.prototype.brake = function () {
+//   this.carSpeed -= 5;
+//   console.log(`${this.carMake} going at ${this.carSpeed} km/h`);
+// };
+
+// bmw.accelerate();
+// bmw.accelerate();
+// bmw.brake();
+// bmw.accelerate();
+// bmw.brake();
+
+// mb.accelerate();
+// mb.accelerate();
+// mb.accelerate();
+// mb.accelerate();
+// mb.brake();
+
+// class expression
+// const PersonCl = class {}
+
+// class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+  greet() {
+    console.log(`Hey ${this.firstName}`);
+  }
 }
 
-Car.prototype.accelerate = function () {
-  this.carSpeed += 10;
-  console.log(`${this.carMake} going at ${this.carSpeed} km/h`);
-};
+const jessica = new PersonCl('Jessica', 1996);
 
-Car.prototype.brake = function () {
-  this.carSpeed -= 5;
-  console.log(`${this.carMake} going at ${this.carSpeed} km/h`);
-};
+console.log(jessica);
+jessica.calcAge();
 
-bmw.accelerate();
-bmw.accelerate();
-bmw.brake();
-bmw.accelerate();
-bmw.brake();
+console.log(jessica.__proto__ === PersonCl.prototype);
 
-mb.accelerate();
-mb.accelerate();
-mb.accelerate();
-mb.accelerate();
-mb.brake();
+// PersonCl.prototype.greet = function () {
+//   console.log(`Hey ${this.firstName}`);
+// };
+jessica.greet();
+
+// 1. Classes are NOT hoisted
+// 2. Classes are first-class citizens
+// 3. Classes are executed in strict mode
